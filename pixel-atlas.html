@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Atlas — Web design & development</title>
+<meta name="description" content="Pixel Atlas is a two-person freelance studio building websites and small web apps at student rates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e1826;
+    --ink-2:#152441;
+    --ink-3:#1b2e50;
+    --parchment:#f1e8d0;
+    --brass:#c9992e;
+    --brass-soft:rgba(201,153,46,0.35);
+    --pixel:#52c7dd;
+    --text:#efe8d6;
+    --muted:#93a7bd;
+    --font-display:'Fraunces', serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --font-body:'Inter', sans-serif;
+    --nav-h:76px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  section{scroll-margin-top:var(--nav-h);}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block;}
+  ul{list-style:none;}
+
+  ::selection{background:var(--brass); color:var(--ink);}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--pixel);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--pixel);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--pixel);
+    display:inline-block;
+  }
+
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:var(--nav-h);
+    display:flex;
+    align-items:center;
+    background:rgba(14,24,38,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,153,46,0.18);
+  }
+  .nav-inner{
+    max-width:1120px;
+    margin:0 auto;
+    width:100%;
+    padding:0 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand svg{color:var(--brass);}
+  .brand-word{
+    font-family:var(--font-mono);
+    font-weight:600;
+    letter-spacing:0.08em;
+    font-size:0.95rem;
+    text-transform:uppercase;
+  }
+  .brand-word span{color:var(--pixel);}
+
+  nav.links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+  }
+  nav.links a{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    position:relative;
+    padding:6px 0;
+    transition:color 0.2s ease;
+  }
+  nav.links a:hover{color:var(--text);}
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0;
+    height:1px;
+    background:var(--pixel);
+    transition:width 0.2s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .btn{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border-radius:3px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all 0.2s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--brass);
+    color:var(--ink);
+    border-color:var(--brass);
+  }
+  .btn-primary:hover{
+    background:transparent;
+    color:var(--brass);
+  }
+  .btn-ghost{
+    border-color:rgba(239,232,214,0.3);
+    color:var(--text);
+  }
+  .btn-ghost:hover{
+    border-color:var(--pixel);
+    color:var(--pixel);
+  }
+  .nav-cta{display:none;}
+  @media(min-width:640px){ .nav-cta{display:inline-flex;} }
+
+  /* ---------- WAYFINDING RAIL ---------- */
+  .rail{
+    position:fixed;
+    left:36px;
+    top:var(--nav-h);
+    bottom:0;
+    width:20px;
+    z-index:50;
+    display:none;
+  }
+  @media(min-width:1080px){ .rail{display:block;} }
+  .rail-line{
+    position:absolute;
+    left:9px;
+    top:8%;
+    bottom:8%;
+    width:1px;
+    background-image:linear-gradient(var(--brass-soft) 60%, transparent 0%);
+    background-size:1px 8px;
+    background-repeat:repeat-y;
+  }
+  .rail-pins{
+    position:relative;
+    height:84%;
+    top:8%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .rail-pin{
+    width:19px; height:19px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .rail-pin .dot{
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--ink);
+    border:1.5px solid var(--brass);
+    transition:all 0.25s ease;
+  }
+  .rail-pin.active .dot{
+    background:var(--pixel);
+    border-color:var(--pixel);
+    box-shadow:0 0 0 4px rgba(82,199,221,0.18);
+    transform:scale(1.15);
+  }
+  .rail-pin .tag{
+    position:absolute;
+    left:26px;
+    top:50%;
+    transform:translateY(-50%);
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    white-space:nowrap;
+    opacity:0;
+    transition:opacity 0.2s ease;
+    pointer-events:none;
+  }
+  .rail-pin.active .tag{opacity:1; color:var(--pixel);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:120px 0 100px;
+    overflow:hidden;
+    background-image:
+      linear-gradient(rgba(201,153,46,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,153,46,0.08) 1px, transparent 1px);
+    background-size:64px 64px;
+    background-position:center -1px;
+    -webkit-mask-image:linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .hero-content{position:relative; z-index:2; -webkit-mask-image:none; mask-image:none;}
+  .hero .wrap{position:relative;}
+  .hero-compass{
+    position:absolute;
+    right:-60px;
+    top:-40px;
+    width:420px;
+    height:420px;
+    color:var(--brass);
+    opacity:0.08;
+    z-index:1;
+  }
+  h1.headline{
+    font-size:clamp(2.4rem, 5.2vw, 4.2rem);
+    line-height:1.08;
+    max-width:15ch;
+    margin-bottom:26px;
+  }
+  h1.headline em{
+    font-style:italic;
+    color:var(--brass);
+    font-weight:500;
+  }
+  .hero-sub{
+    font-size:1.1rem;
+    color:var(--muted);
+    max-width:52ch;
+    margin-bottom:36px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:44px;
+  }
+  .meta-line{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+  }
+  .meta-line .sep{color:var(--brass);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  .section{padding:90px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom:16px;}
+  .section-head p{color:var(--muted); font-size:1.02rem;}
+  .divider{border-top:1px solid rgba(201,153,46,0.14);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr; gap:40px;} }
+  .about-copy p{color:var(--muted); margin-bottom:18px; font-size:1.02rem;}
+  .about-copy p strong{color:var(--text); font-weight:600;}
+
+  .stat-card{
+    background:var(--ink-2);
+    border:1px solid rgba(201,153,46,0.16);
+    border-radius:6px;
+    padding:28px;
+  }
+  .stat-card ul li{
+    display:flex;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(147,167,189,0.12);
+    font-size:0.95rem;
+    color:var(--text);
+  }
+  .stat-card ul li:last-child{border-bottom:none;}
+  .stat-card ul li svg{flex-shrink:0; color:var(--brass); margin-top:3px;}
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:rgba(201,153,46,0.16);
+    border:1px solid rgba(201,153,46,0.16);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  @media(max-width:700px){ .service-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--ink);
+    padding:34px 32px;
+    transition:background 0.25s ease;
+  }
+  .service-card:hover{background:var(--ink-2);}
+  .service-card svg{color:var(--pixel); margin-bottom:18px;}
+  .service-card h3{font-size:1.18rem; font-weight:600; margin-bottom:10px; font-family:var(--font-body);}
+  .service-card p{color:var(--muted); font-size:0.95rem;}
+
+  /* ---------- PRICING ---------- */
+  .pricing-panel{
+    background:var(--parchment);
+    color:var(--ink);
+    border-radius:8px;
+    padding:52px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media(max-width:820px){ .pricing-panel{grid-template-columns:1fr; padding:36px 28px;} }
+  .pricing-panel h2{color:var(--ink); font-size:clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom:16px;}
+  .pricing-panel p{color:#3a3226; font-size:1rem;}
+  .pricing-tag{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#7a5b16;
+    border:1px solid rgba(122,91,22,0.35);
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:3px;
+    margin-bottom:20px;
+  }
+
+  /* ---------- BRIEF (what we need) ---------- */
+  .brief-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+  }
+  @media(max-width:820px){ .brief-list{grid-template-columns:1fr;} }
+  .brief-item{
+    background:var(--ink-2);
+    padding:30px 32px;
+    border-left:2px solid var(--brass);
+  }
+  .brief-item .tag-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .brief-item .tag-row svg{color:var(--pixel);}
+  .brief-item h3{
+    font-family:var(--font-body);
+    font-size:1.02rem;
+    font-weight:600;
+  }
+  .brief-item p{color:var(--muted); font-size:0.94rem;}
+  .brief-item p.note{
+    margin-top:10px;
+    font-size:0.85rem;
+    color:var(--brass);
+    font-style:italic;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    background:var(--ink-2);
+    border:1px solid rgba(201,153,46,0.2);
+    border-radius:8px;
+    padding:56px;
+    text-align:center;
+  }
+  @media(max-width:640px){ .contact-panel{padding:36px 22px;} }
+  .contact-panel h2{font-size:clamp(1.7rem, 3vw, 2.4rem); margin-bottom:14px;}
+  .contact-panel > p{color:var(--muted); max-width:48ch; margin:0 auto 34px;}
+  .email-display{
+    font-family:var(--font-mono);
+    font-size:clamp(1.1rem, 2.6vw, 1.5rem);
+    color:var(--pixel);
+    letter-spacing:0.01em;
+    margin-bottom:6px;
+    word-break:break-all;
+  }
+  .email-hint{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:var(--muted);
+    margin-bottom:32px;
+  }
+  .contact-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid rgba(201,153,46,0.16);
+    padding:40px 0;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+  }
+  .footer-brand svg{color:var(--brass); width:18px; height:18px;}
+  footer .fine{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .rail-pin.active .dot{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="Pixel Atlas home">
+      <svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="24" cy="24" r="19"/>
+        <path d="M24 6.5v6M24 35.5v6M6.5 24h6M35.5 24h6"/>
+        <path d="M24 14L28 24L24 34L20 24Z" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="brand-word">Pixel <span>Atlas</span></span>
+    </a>
+    <nav class="links">
+      <a href="#about">Studio</a>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#brief">Brief</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry&body=Hi%20Pixel%20Atlas%2C%0A%0AProject%20idea%3A%0A%0A%0ALogo%20or%20creative%20direction%3A%0A%0A%0AHosting%20or%20server%3A%0A%0A%0ATimeline%20or%20budget%20%28optional%29%3A%0A%0A%0AThanks%21">Email us</a>
+  </div>
+</header>
+
+<div class="rail" aria-hidden="true">
+  <div class="rail-line"></div>
+  <div class="rail-pins">
+    <a class="rail-pin" data-target="home" href="#home"><span class="dot"></span><span class="tag">Home</span></a>
+    <a class="rail-pin" data-target="about" href="#about"><span class="dot"></span><span class="tag">Studio</span></a>
+    <a class="rail-pin" data-target="work" href="#work"><span class="dot"></span><span class="tag">Work</span></a>
+    <a class="rail-pin" data-target="pricing" href="#pricing"><span class="dot"></span><span class="tag">Pricing</span></a>
+    <a class="rail-pin" data-target="brief" href="#brief"><span class="dot"></span><span class="tag">Brief</span></a>
+    <a class="rail-pin" data-target="contact" href="#contact"><span class="dot"></span><span class="tag">Contact</span></a>
+  </div>
+</div>
+
+<main>
+
+  <section id="home" class="hero">
+    <svg class="hero-compass" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="0.6">
+      <circle cx="24" cy="24" r="22"/>
+      <circle cx="24" cy="24" r="15"/>
+      <path d="M24 2v44M2 24h44M8.6 8.6l30.8 30.8M39.4 8.6L8.6 39.4"/>
+    </svg>
+    <div class="wrap hero-content">
+      <div class="eyebrow">Web design &amp; development, two people deep</div>
+      <h1 class="headline">We're new. Our work still <em>gets there</em>.</h1>
+      <p class="hero-sub">Pixel Atlas is a two-person freelance studio — a website, landing page, or small web app, planned and built properly, at a price built for a first project.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry&body=Hi%20Pixel%20Atlas%2C%0A%0AProject%20idea%3A%0A%0A%0ALogo%20or%20creative%20direction%3A%0A%0A%0AHosting%20or%20server%3A%0A%0A%0ATimeline%20or%20budget%20%28optional%29%3A%0A%0A%0AThanks%21">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Email us your idea
+        </a>
+        <a class="btn btn-ghost" href="#brief">What we'll need from you</a>
+      </div>
+      <p class="meta-line">2 FOUNDERS <span class="sep">·</span> 3RD-YEAR ENGINEERING STUDENTS <span class="sep">·</span> OPEN FOR PROJECTS</p>
+    </div>
+  </section>
+
+  <section id="about" class="section reveal">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy">
+          <div class="eyebrow">Who's behind it</div>
+          <h2>Two people, one desk, no middlemen.</h2>
+          <p>Pixel Atlas is run by two 3rd-year engineering students building real projects for real clients. We're early in our careers, and that's exactly why our rates sit well below typical freelance or agency pricing — <strong>we're pricing for where we are, not for what a full studio would charge.</strong></p>
+          <p>What that means for you: no account managers, no handoffs, no guessing who's actually writing your code. You talk directly to the two people building your site, from the first email to launch.</p>
+        </div>
+        <div class="stat-card">
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              <span>Rates set for a first portfolio, not a full agency</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              <span>You work directly with the two people building it</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              <span>Every project matters to our own portfolio too</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What we build</div>
+        <h2>Four kinds of projects we take on</h2>
+        <p>If what you need doesn't fit neatly into one of these, tell us anyway — it's usually still something we can scope.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="8.2" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+          <h3>Landing pages &amp; websites</h3>
+          <p>Clean, fast, mobile-ready sites for a small business, a portfolio, or a product launch.</p>
+        </div>
+        <div class="service-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg>
+          <h3>Web apps &amp; small tools</h3>
+          <p>Simple, functional tools built around what your business or project actually needs — nothing bloated.</p>
+        </div>
+        <div class="service-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a9 6.5 0 100 13c1 0 1.5-.6 1.5-1.4 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a4 4 0 004-4c0-3-3.6-5.2-8-5.2z"/><circle cx="7.5" cy="10.5" r=".9" fill="currentColor" stroke="none"/><circle cx="9.5" cy="7" r=".9" fill="currentColor" stroke="none"/><circle cx="13" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg>
+          <h3>Branding support</h3>
+          <p>No logo yet? We can help sketch a simple visual direction, or work from what you already have.</p>
+        </div>
+        <div class="service-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="6" rx="1.2"/><rect x="4" y="14" width="16" height="6" rx="1.2"/><circle cx="7.5" cy="7" r=".7" fill="currentColor" stroke="none"/><circle cx="7.5" cy="17" r=".7" fill="currentColor" stroke="none"/></svg>
+          <h3>Hosting &amp; setup</h3>
+          <p>We can deploy to a server you already own, or help you get one running from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section reveal">
+    <div class="wrap">
+      <div class="pricing-panel">
+        <div>
+          <span class="pricing-tag">On pricing</span>
+          <h2>Fair for you, fair for where we are.</h2>
+        </div>
+        <p>Because we're early in our careers, our rates are noticeably lower than what most freelancers or agencies charge for similar work. Every project is quoted individually based on scope — there's no fixed package, because no two ideas are the same. What we can promise is a quote that reflects the real time and complexity of your project, explained clearly before we start anything.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="brief" class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Before you email us</div>
+        <h2>What we'll need from you</h2>
+        <p>The more we know upfront, the faster — and more accurately — we can quote your project. When you reach out, try to include these four things.</p>
+      </div>
+      <div class="brief-list">
+        <div class="brief-item">
+          <div class="tag-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <h3>Your project idea</h3>
+          </div>
+          <p>What it's for, who it's for, and roughly what pages or features you have in mind. A rough sketch is fine — it doesn't need to be polished.</p>
+        </div>
+        <div class="brief-item">
+          <div class="tag-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <h3>Logo &amp; brand assets, if you have them</h3>
+          </div>
+          <p>Or let us know you'd like our help figuring out a creative direction from scratch.</p>
+          <p class="note">Design work starting from nothing adds to the overall cost — it's extra time on our end.</p>
+        </div>
+        <div class="brief-item">
+          <div class="tag-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <h3>Whether you already have hosting</h3>
+          </div>
+          <p>Do you already have a server or hosting for the site? If not, we can set one up for you.</p>
+          <p class="note">A server we provide comes with its own monthly cost on top of the project price — we'll quote that based on what your site actually needs.</p>
+        </div>
+        <div class="brief-item">
+          <div class="tag-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <h3>Anything else that matters</h3>
+          </div>
+          <p>A deadline, a rough budget, or a couple of sites you like the feel of — all of it helps us get the quote right the first time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section reveal">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+        <h2>Ready to start?</h2>
+        <p>Send us an email with your project idea and we'll take it from there. Using the button below pre-fills a template with everything we'll need.</p>
+        <div class="email-display" id="emailText">pixel.4tlas@gmail.com</div>
+        <div class="email-hint">(that's a 4, not an "a")</div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry&body=Hi%20Pixel%20Atlas%2C%0A%0AProject%20idea%3A%0A%0A%0ALogo%20or%20creative%20direction%3A%0A%0A%0AHosting%20or%20server%3A%0A%0A%0ATimeline%20or%20budget%20%28optional%29%3A%0A%0A%0AThanks%21">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Email us your idea
+          </a>
+          <button class="btn btn-ghost" id="copyBtn" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M16 8V5a1.5 1.5 0 00-1.5-1.5H5A1.5 1.5 0 003.5 5v10A1.5 1.5 0 005 16.5h3"/></svg>
+            <span id="copyLabel">Copy email</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="24" cy="24" r="19"/><path d="M24 6.5v6M24 35.5v6M6.5 24h6M35.5 24h6"/><path d="M24 14L28 24L24 34L20 24Z" fill="currentColor" stroke="none"/></svg>
+      <span>Pixel Atlas — a two-person freelance studio</span>
+    </div>
+    <div class="fine">pixel.4tlas@gmail.com</div>
+  </div>
+</footer>
+
+<script>
+  // Copy email to clipboard
+  const copyBtn = document.getElementById('copyBtn');
+  const copyLabel = document.getElementById('copyLabel');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('pixel.4tlas@gmail.com');
+      copyLabel.textContent = 'Copied!';
+      setTimeout(() => { copyLabel.textContent = 'Copy email'; }, 1800);
+    } catch (e) {
+      copyLabel.textContent = 'pixel.4tlas@gmail.com';
+    }
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Wayfinding rail active state
+  const railPins = document.querySelectorAll('.rail-pin');
+  const sections = document.querySelectorAll('main section[id]');
+  const railMap = {};
+  railPins.forEach(pin => { railMap[pin.dataset.target] = pin; });
+
+  const railObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const pin = railMap[entry.target.id];
+      if (!pin) return;
+      if (entry.isIntersecting) {
+        railPins.forEach(p => p.classList.remove('active'));
+        pin.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(sec => railObserver.observe(sec));
+</script>
+
+</body>
+</html>
