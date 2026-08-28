@@ -3,10 +3,10 @@
     <div class="wrap">
       <div class="pricing-panel">
         <div>
-          <span class="pricing-tag">On pricing</span>
-          <h2>Fair for you, fair for where we are.</h2>
+          <span class="pricing-tag">Transparent pricing</span>
+          <h2>Clear quotes, no hidden costs.</h2>
         </div>
-        <p>Because we're early in our careers, our rates are noticeably lower than what most freelancers or agencies charge for similar work. Every project is quoted individually based on scope — there's no fixed package, because no two ideas are the same. What we can promise is a quote that reflects the real time and complexity of your project, explained clearly before we start anything.</p>
+        <p>Every project is quoted individually based on its scope. There's no fixed package, because no two ideas are the same. What we can promise is a price that reflects the real time and complexity of your project, explained clearly before we start anything. You'll know exactly what you're paying for, what's included, and what it gets you.</p>
       </div>
     </div>
   </section>

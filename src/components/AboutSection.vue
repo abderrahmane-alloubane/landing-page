@@ -3,24 +3,24 @@
     <div class="wrap">
       <div class="about-grid">
         <div class="about-copy">
-          <div class="eyebrow">Who's behind it</div>
-          <h2>Two people, one desk, no middlemen.</h2>
-          <p>Pixel Atlas is run by two 3rd-year engineering students building real projects for real clients. We're early in our careers, and that's exactly why our rates sit well below typical freelance or agency pricing — <strong>we're pricing for where we are, not for what a full studio would charge.</strong></p>
-          <p>What that means for you: no account managers, no handoffs, no guessing who's actually writing your code. You talk directly to the two people building your site, from the first email to launch.</p>
+          <div class="eyebrow">What we do</div>
+          <h2>Websites built for results, not just looks.</h2>
+          <p>We design and build clean, fast, mobile-ready websites that work as hard as they look. Every page is planned around your goals, whether that's getting more enquiries, selling a product, or establishing your business online. <strong>You get a site that's quick to load, easy to update, and built to rank.</strong></p>
+          <p>From a single landing page to a multi-page business site, we handle the whole project in-house: design, development, and launch. You talk directly to the people building your site, from the first email to going live, with no account managers and no handoffs in between.</p>
         </div>
         <div class="stat-card">
           <ul>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
-              <span>Rates set for a first portfolio, not a full agency</span>
+              <span>Fast, mobile-first sites that load in a blink</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
-              <span>You work directly with the two people building it</span>
+              <span>Search-friendly from day one, so you get found</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
-              <span>Every project matters to our own portfolio too</span>
+              <span>Full project handled in-house, start to launch</span>
             </li>
           </ul>
         </div>

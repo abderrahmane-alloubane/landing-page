@@ -4,7 +4,7 @@
       <div class="section-head">
         <div class="eyebrow">Before you email us</div>
         <h2>What we'll need from you</h2>
-        <p>The more we know upfront, the faster — and more accurately — we can quote your project. When you reach out, try to include these four things.</p>
+        <p>The more we know upfront, the faster and more accurately we can quote your project. When you reach out, try to include these four things.</p>
       </div>
       <div class="brief-list">
         <div class="brief-item">
@@ -12,7 +12,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
             <h3>Your project idea</h3>
           </div>
-          <p>What it's for, who it's for, and roughly what pages or features you have in mind. A rough sketch is fine — it doesn't need to be polished.</p>
+          <p>What it's for, who it's for, and roughly what pages or features you have in mind. A rough sketch is fine; it doesn't need to be polished.</p>
         </div>
         <div class="brief-item">
           <div class="tag-row">
@@ -20,7 +20,7 @@
             <h3>Logo &amp; brand assets, if you have them</h3>
           </div>
           <p>Or let us know you'd like our help figuring out a creative direction from scratch.</p>
-          <p class="note">Design work starting from nothing adds to the overall cost — it's extra time on our end.</p>
+          <p class="note">Design work starting from nothing adds to the overall cost. It's extra time on our end.</p>
         </div>
         <div class="brief-item">
           <div class="tag-row">
@@ -28,14 +28,14 @@
             <h3>Whether you already have hosting</h3>
           </div>
           <p>Do you already have a server or hosting for the site? If not, we can set one up for you.</p>
-          <p class="note">A server we provide comes with its own monthly cost on top of the project price — we'll quote that based on what your site actually needs.</p>
+          <p class="note">A server we provide comes with its own monthly cost on top of the project price. We'll quote that based on what your site actually needs.</p>
         </div>
         <div class="brief-item">
           <div class="tag-row">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
             <h3>Anything else that matters</h3>
           </div>
-          <p>A deadline, a rough budget, or a couple of sites you like the feel of — all of it helps us get the quote right the first time.</p>
+          <p>A deadline, a rough budget, or a couple of sites you like the feel of all help us get the quote right the first time.</p>
         </div>
       </div>
     </div>

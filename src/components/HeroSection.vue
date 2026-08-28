@@ -10,9 +10,9 @@ const mailtoBase = 'mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry
       <path d="M24 2v44M2 24h44M8.6 8.6l30.8 30.8M39.4 8.6L8.6 39.4"/>
     </svg>
     <div class="wrap hero-content">
-      <div class="eyebrow">Web design &amp; development, two people deep</div>
-      <h1 class="headline">We're new. Our work still <em>gets there</em>.</h1>
-      <p class="hero-sub">Pixel Atlas is a two-person freelance studio — a website, landing page, or small web app, planned and built properly, at a price built for a first project.</p>
+      <div class="eyebrow">Web design &amp; development studio</div>
+      <h1 class="headline">Websites, landing pages &amp; small apps, <em>built to perform</em>.</h1>
+      <p class="hero-sub">Fast, responsive websites and web apps designed to convert visitors into customers, from a clean landing page for your launch to a full small-business site, delivered on time and on budget.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" :href="mailtoBase">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
@@ -20,7 +20,7 @@ const mailtoBase = 'mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry
         </a>
         <a class="btn btn-ghost" href="#brief">What we'll need from you</a>
       </div>
-      <p class="meta-line">2 FOUNDERS <span class="sep">&middot;</span> 3RD-YEAR ENGINEERING STUDENTS <span class="sep">&middot;</span> OPEN FOR PROJECTS</p>
+      <p class="meta-line">WEBSITES <span class="sep">&middot;</span> LANDING PAGES <span class="sep">&middot;</span> WEB APPS <span class="sep">&middot;</span> OPEN FOR PROJECTS</p>
     </div>
   </section>
 </template>
