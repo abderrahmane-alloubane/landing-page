@@ -13,7 +13,7 @@ const mailtoBase = 'mailto:pixel.4tlas@gmail.com?subject=New%20project%20inquiry
         </svg>
         <span class="brand-word">Pixel <span>Atlas</span></span>
       </a>
-      <nav class="links">
+      <nav class="links" aria-label="Primary">
         <a href="#about">Studio</a>
         <a href="#work">Work</a>
         <a href="#pricing">Pricing</a>

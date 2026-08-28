@@ -1,0 +1,17 @@
+{
+  "name": "Pixel Atlas — Web Design & Development",
+  "short_name": "Pixel Atlas",
+  "description": "A two-person freelance studio building websites, landing pages and small web apps at student rates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e1826",
+  "theme_color": "#0e1826",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

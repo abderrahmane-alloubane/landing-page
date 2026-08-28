@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1826"/>
+      <stop offset="1" stop-color="#152441"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#c9992e" stroke-opacity="0.12" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#c9992e"/>
+
+  <!-- Compass mark -->
+  <g transform="translate(96,96)">
+    <circle cx="90" cy="90" r="66" fill="none" stroke="#52c7dd" stroke-width="3"/>
+    <circle cx="90" cy="90" r="70" fill="none" stroke="#c9992e" stroke-width="3" stroke-dasharray="14 10" stroke-linecap="round"/>
+    <path d="M90 40v18M90 122v18M40 90h18M122 90h18" stroke="#f1e8d0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M90 62 L110 90 L90 118 L70 90 Z" fill="#c9992e"/>
+  </g>
+
+  <text x="280" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="700" fill="#f1e8d0" letter-spacing="1">Pixel Atlas</text>
+
+  <text x="282" y="330" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#93a7bd" letter-spacing="6">WEB DESIGN &amp; DEVELOPMENT</text>
+
+  <rect x="282" y="360" width="120" height="3" fill="#c9992e"/>
+
+  <text x="282" y="408" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#efe8d6">A two-person freelance studio — websites, landing pages</text>
+  <text x="282" y="444" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#efe8d6">and small web apps, built properly at accessible rates.</text>
+
+  <text x="282" y="510" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#c9992e" letter-spacing="2">PIXELATLAS.ONLINE</text>
+</svg>
